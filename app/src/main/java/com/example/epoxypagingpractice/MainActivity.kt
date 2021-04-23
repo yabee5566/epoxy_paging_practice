@@ -1,9 +1,7 @@
 package com.example.epoxypagingpractice
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,16 +17,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         val rv = findViewById<RecyclerView>(R.id.rv)
-        val adapter = P3Adapter()
+        val mainAdapter = P3Adapter()
+        val loadAdapter = LoadStateAdapterImpl{
+mainAdapter.refresh()
+        }
         rv.layoutManager = LinearLayoutManager(this)
-        rv.adapter = adapter
+        rv.adapter = mainAdapter.withLoadStateFooter(loadAdapter)
         lifecycleScope.launch {
             viewModel.pageDataFlow.collectLatest {
-             adapter
-                 .submitData(it)
+                mainAdapter.submitData(it)
             }
         }
-
     }
 
     override fun onResume() {
