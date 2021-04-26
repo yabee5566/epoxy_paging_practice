@@ -3,6 +3,7 @@ package com.example.epoxypagingpractice.epoxy
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
@@ -18,7 +19,7 @@ class LoadStateModelView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : LinearLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr) {
     var binding: VhLoadBinding
 
     init {
