@@ -3,7 +3,6 @@ package com.example.epoxypagingpractice.epoxy
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
@@ -17,6 +16,7 @@ class TicketModelView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
+
     private val binding:VhTicketBinding
     init {
         inflate(context, R.layout.vh_ticket,this)
